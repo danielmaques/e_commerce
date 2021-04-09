@@ -2,6 +2,9 @@
 
 A new Flutter application.
 
+Add GoogleLogin IOS
+Add Facebook IOS
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.

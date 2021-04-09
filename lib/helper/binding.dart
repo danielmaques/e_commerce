@@ -6,5 +6,4 @@ class Binding extends Bindings{
   void dependencies() {
     Get.lazyPut(() => AuthViewModel());
   }
-
 }

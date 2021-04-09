@@ -26,7 +26,7 @@ class LoginScreen extends GetWidget<AuthViewModel> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CustomText(
-                  text: "Bem Vindo",
+                  text: "Entrar",
                   fontSize: 30,
                 ),
                 CustomText(
@@ -37,7 +37,7 @@ class LoginScreen extends GetWidget<AuthViewModel> {
               ],
             ),
             SizedBox(height: 10),
-            CustomText(text: "Entrar", fontSize: 14, color: AppColors.GREY92),
+          CustomText(text: "Bem Vindo", fontSize: 14, color: AppColors.GREY92),
             SizedBox(height: 30),
             CustomTextFormField(
               text: "Email",
@@ -85,7 +85,7 @@ class LoginScreen extends GetWidget<AuthViewModel> {
               text: "Sign In with Facebook",
               imageName: "assets/imagens/facebook.png",
               onPress: (){
-                controller.facebookSigninMethod();
+
               },
             ),
             SizedBox(height: 10),
