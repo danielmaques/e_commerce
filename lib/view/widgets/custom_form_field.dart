@@ -21,7 +21,7 @@ class CustomTextFormField extends StatelessWidget {
           children: [
             CustomText(
                 text: text,
-                color: AppColors.GREYDARK,
+                color: AppColors.GREY70,
                 fontSize: 14,
             ),
             TextFormField(
@@ -30,7 +30,7 @@ class CustomTextFormField extends StatelessWidget {
               decoration: InputDecoration(
                   hintText: hint,
                   hintStyle: TextStyle(
-                      color: Colors.black
+                      color: AppColors.GREYBB,
                   ),
                   fillColor: Colors.white),
             ),

@@ -37,7 +37,7 @@ class LoginScreen extends GetWidget<AuthViewModel> {
               ],
             ),
             SizedBox(height: 10),
-            CustomText(text: "Entrar", fontSize: 14, color: AppColors.GREY),
+            CustomText(text: "Entrar", fontSize: 14, color: AppColors.GREY92),
             SizedBox(height: 30),
             CustomTextFormField(
               text: "Email",
