@@ -1,6 +1,6 @@
 import 'package:e_comerce/core/service/firestore_user.dart';
 import 'package:e_comerce/model/user.model.dart';
-import 'package:e_comerce/view/home/home.view.dart';
+import 'package:e_comerce/view/home/home_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
