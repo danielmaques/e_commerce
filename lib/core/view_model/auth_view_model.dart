@@ -1,4 +1,6 @@
+import 'package:e_comerce/view/home/home.view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -35,7 +37,7 @@ class AuthViewModel extends GetxController {
     final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
     print(googleUser);
     GoogleSignInAuthentication googleSignInAuthentication =
-    await googleUser.authentication;
+        await googleUser.authentication;
 
     final AuthCredential credential = GoogleAuthProvider.credential(
       idToken: googleSignInAuthentication.idToken,
@@ -43,7 +45,6 @@ class AuthViewModel extends GetxController {
     );
 
     await _auth.signInWithCredential(credential);
-
   }
 
   /*void facebookSignInMethod() async {
@@ -55,7 +56,7 @@ class AuthViewModel extends GetxController {
     await _auth.signInWithCredential(facebookAuthCredential).then((user) {
       saveUser(user);
     });
-  }
+  }*/
 
   void signInWithEmailAndPassword() async {
     try {
@@ -64,8 +65,8 @@ class AuthViewModel extends GetxController {
     } catch (e) {
       print(e.message);
       Get.snackbar(
-        'Error login account',
-        e.message,
+        'Falha ao logar',
+        'Email ou Senha invalidos!',
         colorText: Colors.black,
         snackPosition: SnackPosition.BOTTOM,
       );
@@ -74,13 +75,8 @@ class AuthViewModel extends GetxController {
 
   void createAccountWithEmailAndPassword() async {
     try {
-      await _auth
-          .createUserWithEmailAndPassword(email: email, password: password)
-          .then((user) async {
-        saveUser(user);
-      });
-
-      Get.offAll(HomeView());
+      await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
     } catch (e) {
       print(e.message);
       Get.snackbar(
@@ -92,14 +88,12 @@ class AuthViewModel extends GetxController {
     }
   }
 
-  void saveUser(UserCredential user) async {
+/*void saveUser(UserCredential user) async {
     await FireStoreUser().addUserToFireStore(UserModel(
       userId: user.user.uid,
       email: user.user.email,
       name: name == null ? user.user.displayName : name,
       pic: '',
     ));
-  }
-
-   */
+  }*/
 }

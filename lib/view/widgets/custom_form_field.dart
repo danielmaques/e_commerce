@@ -1,4 +1,3 @@
-
 import 'package:e_comerce/style/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -12,30 +11,36 @@ class CustomTextFormField extends StatelessWidget {
   final Function validator;
 
 
-  CustomTextFormField({this.text, this.hint, this.onSaved, this.validator});
+  CustomTextFormField(
+      { this.text,
+        this.hint,
+        this.onSaved,
+        this.validator,
+      }
+    );
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: Column(
-          children: [
-            CustomText(
-                text: text,
-                color: AppColors.GREY70,
-                fontSize: 14,
-            ),
-            TextFormField(
-              onSaved: onSaved,
-              validator: validator,
-              decoration: InputDecoration(
-                  hintText: hint,
-                  hintStyle: TextStyle(
-                      color: AppColors.GREYBB,
-                  ),
-                  fillColor: Colors.white),
-            ),
-          ],
-        ),
+      child: Column(
+        children: [
+          CustomText(
+            text: text,
+            color: AppColors.GREY70,
+            fontSize: 14,
+          ),
+          TextFormField(
+            onSaved: onSaved,
+            validator: validator,
+            decoration: InputDecoration(
+                hintText: hint,
+                hintStyle: TextStyle(
+                  color: AppColors.GREYBB,
+                ),
+                fillColor: Colors.white),
+          ),
+        ],
+      ),
     );
   }
 }

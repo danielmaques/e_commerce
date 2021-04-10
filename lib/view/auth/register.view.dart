@@ -1,14 +1,12 @@
 import 'package:e_comerce/core/view_model/auth_view_model.dart';
 import 'package:e_comerce/style/colors.dart';
-import 'package:e_comerce/view/auth/register.view.dart';
 import 'package:e_comerce/view/widgets/custom_button.dart';
-import 'package:e_comerce/view/widgets/custom_button_social.dart';
 import 'package:e_comerce/view/widgets/custom_form_field.dart';
 import 'package:e_comerce/view/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class LoginScreen extends GetWidget<AuthViewModel> {
+class RegisterView extends GetWidget<AuthViewModel> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -17,6 +15,14 @@ class LoginScreen extends GetWidget<AuthViewModel> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
+        leading: GestureDetector(
+          onTap: (){
+            Get.back();
+          },
+            child: Icon(
+          Icons.arrow_back,
+          color: Colors.black,
+        )),
       ),
       body: Padding(
         padding: const EdgeInsets.only(
@@ -28,31 +34,18 @@ class LoginScreen extends GetWidget<AuthViewModel> {
           key: _formKey,
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CustomText(
-                    text: "Entrar",
-                    fontSize: 30,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Get.to(
-                        RegisterView(),
-                      );
-                    },
-                    child: CustomText(
-                      text: "Criar Conta",
-                      fontSize: 18,
-                      color: AppColors.GEEN,
-                    ),
-                  )
-                ],
-              ),
-              SizedBox(height: 10),
               CustomText(
-                  text: "Bem Vindo", fontSize: 14, color: AppColors.GREY92),
+                text: "Criar Conta",
+                fontSize: 30,
+              ),
               SizedBox(height: 30),
+              CustomTextFormField(
+                text: "Nome",
+                hint: "Digite seu nome",
+                onSaved: (value) {},
+                validator: (value) {},
+              ),
+              SizedBox(height: 20),
               CustomTextFormField(
                 text: "Email",
                 hint: "username@gmail.com",
@@ -79,14 +72,6 @@ class LoginScreen extends GetWidget<AuthViewModel> {
                 },
               ),
               SizedBox(height: 20),
-              CustomText(
-                text: "Esqueci minha senha",
-                fontSize: 14,
-                alignment: Alignment.topRight,
-              ),
-              SizedBox(
-                height: 15,
-              ),
               CustomButton(
                 onPressed: () {
                   _formKey.currentState.save();
@@ -95,28 +80,8 @@ class LoginScreen extends GetWidget<AuthViewModel> {
                     controller.signInWithEmailAndPassword();
                   }
                 },
-                text: 'Entrar',
+                text: 'Criar Conta',
                 color: AppColors.GEEN,
-              ),
-              SizedBox(height: 40),
-              CustomText(
-                text: "-OU-",
-                alignment: Alignment.center,
-                color: Colors.black,
-              ),
-              SizedBox(height: 40),
-              CustomButtonSocial(
-                text: "Sign In with Facebook",
-                imageName: "assets/imagens/facebook.png",
-                onPress: () {},
-              ),
-              SizedBox(height: 10),
-              CustomButtonSocial(
-                text: "Sign In with Google",
-                imageName: "assets/imagens/google.png",
-                onPress: () {
-                  controller.googleSignInMethod();
-                },
               ),
             ],
           ),
