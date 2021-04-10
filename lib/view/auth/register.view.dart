@@ -42,8 +42,14 @@ class RegisterView extends GetWidget<AuthViewModel> {
               CustomTextFormField(
                 text: "Nome",
                 hint: "Digite seu nome",
-                onSaved: (value) {},
-                validator: (value) {},
+                onSaved: (value) {
+                  controller.name = value;
+                },
+                validator: (value) {
+                  if (value == null) {
+                    print("ERROR");
+                  }
+                },
               ),
               SizedBox(height: 20),
               CustomTextFormField(
@@ -77,7 +83,7 @@ class RegisterView extends GetWidget<AuthViewModel> {
                   _formKey.currentState.save();
 
                   if (_formKey.currentState.validate()) {
-                    controller.signInWithEmailAndPassword();
+                    controller.createAccountWithEmailAndPassword();
                   }
                 },
                 text: 'Criar Conta',

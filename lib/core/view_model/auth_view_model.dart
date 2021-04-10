@@ -1,6 +1,9 @@
+import 'package:e_comerce/core/service/firestore_user.dart';
+import 'package:e_comerce/model/user.model.dart';
 import 'package:e_comerce/view/home/home.view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -44,10 +47,12 @@ class AuthViewModel extends GetxController {
       accessToken: googleSignInAuthentication.accessToken,
     );
 
-    await _auth.signInWithCredential(credential);
+    await _auth.signInWithCredential(credential).then((user) {
+      saveUser(user);
+    });
   }
 
-  /*void facebookSignInMethod() async {
+  void facebookSignInMethod() async {
     final AccessToken result = await FacebookAuth.instance.login();
 
     final FacebookAuthCredential facebookAuthCredential =
@@ -56,7 +61,7 @@ class AuthViewModel extends GetxController {
     await _auth.signInWithCredential(facebookAuthCredential).then((user) {
       saveUser(user);
     });
-  }*/
+  }
 
   void signInWithEmailAndPassword() async {
     try {
@@ -75,25 +80,30 @@ class AuthViewModel extends GetxController {
 
   void createAccountWithEmailAndPassword() async {
     try {
-      await _auth.createUserWithEmailAndPassword(
-          email: email, password: password);
+      await _auth
+          .createUserWithEmailAndPassword(email: email, password: password)
+          .then((user) async {
+        saveUser(user);
+      });
+
+      Get.offAll(HomeView());
     } catch (e) {
       print(e.message);
       Get.snackbar(
-        'Error login account',
-        e.message,
+        'Email já Cadastrado!',
+        'Tente novamente com outro Email',
         colorText: Colors.black,
         snackPosition: SnackPosition.BOTTOM,
       );
     }
   }
 
-/*void saveUser(UserCredential user) async {
+  void saveUser(UserCredential user) async {
     await FireStoreUser().addUserToFireStore(UserModel(
       userId: user.user.uid,
       email: user.user.email,
       name: name == null ? user.user.displayName : name,
       pic: '',
     ));
-  }*/
+  }
 }
