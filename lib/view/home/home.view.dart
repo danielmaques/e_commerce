@@ -1,6 +1,7 @@
 import 'package:e_comerce/view/widgets/custom_list_products.dart';
 import 'package:e_comerce/view/widgets/custom_search.dart';
 import 'package:e_comerce/view/widgets/custom_text.dart';
+import 'package:e_comerce/view/widgets/navegatiom_bar.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatelessWidget {
@@ -16,7 +17,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.only(top: 100, left: 20, right: 20),
+        padding: EdgeInsets.only(top: 50, left: 20, right: 20),
         child: Column(
           children: [
             CustomSearchTextFormField(),
@@ -80,6 +81,7 @@ class HomeView extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: NavegatioBar(),
     );
   }
 }
