@@ -5,12 +5,14 @@ class CustomText extends StatelessWidget {
   final double fontSize;
   final color;
   final Alignment alignment;
+  final int maxLines;
 
   CustomText({
     this.text = '',
     this.fontSize = 16,
     this.color = Colors.black,
     this.alignment = Alignment.topLeft,
+    this.maxLines,
   });
 
   @override
@@ -20,7 +22,9 @@ class CustomText extends StatelessWidget {
       child:
       Text(
         text,
-        style: TextStyle(color: color, fontSize: fontSize),
+        style: TextStyle(color: color, fontSize: fontSize,
+        ),
+        maxLines: maxLines,
       ),
     );
   }
