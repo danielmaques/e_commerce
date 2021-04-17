@@ -1,5 +1,10 @@
+import 'dart:ui';
+
+import 'package:e_comerce/helper/color_tranformation.dart';
+
 class ProductModel {
-  String name, image, description, color, sized, price;
+  String name, image, description, sized, price;
+  Color color;
 
   ProductModel({
     this.name,
@@ -17,7 +22,7 @@ class ProductModel {
 
     name = map['name'];
     image = map['image'];
-    color = map['color'];
+    color = HexColor.fromHex(map['color']);
     sized = map['sized'];
     price = map['price'];
     description = map['description'];
