@@ -1,14 +1,17 @@
+import 'package:e_comerce/core/view_model/cart_view_model.dart';
+import 'package:e_comerce/model/cart_product_model.dart';
 import 'package:e_comerce/model/product_model.dart';
 import 'package:e_comerce/style/colors.dart';
 import 'package:e_comerce/view/widgets/custom_button.dart';
 import 'package:e_comerce/view/widgets/custom_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class Details extends StatelessWidget {
+class Datails extends StatelessWidget {
   ProductModel model;
 
-  Details({this.model});
+  Datails({this.model});
 
   @override
   Widget build(BuildContext context) {
@@ -136,14 +139,24 @@ class Details extends StatelessWidget {
                         )
                       ],
                     ),
-                    Container(
-                      padding: EdgeInsets.all(20),
-                      width: 180,
-                      height: 100,
-                      child: CustomButton(
-                        onPressed: () {},
-                        text: 'Add',
-                        color: AppColors.GEEN,
+                    GetBuilder<CartViewModel>(
+                      init: CartViewModel(),
+                      builder: (controller) => Container(
+                        padding: EdgeInsets.all(20),
+                        width: 180,
+                        height: 100,
+                        child: CustomButton(
+                          onPressed: controller.addProduct(
+                            CartProductModel(
+                              name: model.name,
+                              image: model.image,
+                              price: model.price,
+                              quantity: 1,
+                            ),
+                          ),
+                          text: 'Add',
+                          color: AppColors.GEEN,
+                        ),
                       ),
                     ),
                   ],

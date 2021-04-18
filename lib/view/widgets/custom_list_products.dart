@@ -1,6 +1,6 @@
 import 'package:e_comerce/style/colors.dart';
 import 'package:e_comerce/view/home/home_viel_model.dart';
-import 'file:///C:/Users/ddani/AndroidStudioProjects/e_commerce/lib/view/products/details.dart';
+import 'file:///C:/Users/ddani/AndroidStudioProjects/e_commerce/lib/view/products/datails.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -18,7 +18,7 @@ class CustomListProducts extends StatelessWidget {
           itemBuilder: (context, index) {
             return GestureDetector(
               onTap: () {
-                Get.to(Details(
+                Get.to(Datails(
                   model: controller.productModel[index],
                 ));
               },
