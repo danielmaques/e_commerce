@@ -33,6 +33,17 @@ class CartDataBaseHelper {
         });
   }
 
+  Future<List<CartProductModel>> getAllProduct() async{
+    var dbClient = await database;
+    List<Map> maps = await dbClient.query(tableCartProduct);
+
+    List<CartProductModel> list = maps.isNotEmpty
+        ? maps.map((product) => CartProductModel.fromJson(product)).toList()
+        : [];
+
+    return list;
+  }
+
   insert(CartProductModel model) async {
     var dbClient = await database;
 

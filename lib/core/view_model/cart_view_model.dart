@@ -3,15 +3,32 @@ import 'package:e_comerce/model/cart_product_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-class CartViewModel extends GetxController{
+class CartViewModel extends GetxController {
   ValueNotifier<bool> get loading => _loading;
 
   ValueNotifier<bool> _loading = ValueNotifier(false);
 
-  addProduct(CartProductModel cartProductModel)async{
+  List<CartProductModel> _cartProductModel = [];
+
+  List<CartProductModel> get cartProductModel => _cartProductModel;
+
+  CartViewModel() {
+    getAllProduct();
+  }
+
+  getAllProduct() async {
+    _loading.value = true;
+
+    var dbHelper = CartDataBaseHelper.db;
+    _cartProductModel = await dbHelper.getAllProduct();
+
+    _loading.value = false;
+    update();
+  }
+
+  addProduct(CartProductModel cartProductModel) async {
     var dbHelper = CartDataBaseHelper.db;
     await dbHelper.insert(cartProductModel);
     update();
   }
-
 }

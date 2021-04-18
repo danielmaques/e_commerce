@@ -146,14 +146,16 @@ class Datails extends StatelessWidget {
                         width: 180,
                         height: 100,
                         child: CustomButton(
-                          onPressed: controller.addProduct(
-                            CartProductModel(
-                              name: model.name,
-                              image: model.image,
-                              price: model.price,
-                              quantity: 1,
-                            ),
-                          ),
+                          onPressed: () {
+                            controller.addProduct(
+                              CartProductModel(
+                                name: model.name,
+                                image: model.image,
+                                price: model.price,
+                                quantity: 1,
+                              ),
+                            );
+                          },
                           text: 'Add',
                           color: AppColors.GEEN,
                         ),
