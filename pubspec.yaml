@@ -21,6 +21,7 @@ dependencies:
   firebase_auth:
   cloud_firestore:
   flutter_facebook_auth:
+  sqflite:
 
 dev_dependencies:
   flutter_test:
